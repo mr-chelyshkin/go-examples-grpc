@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package pb;
+option go_package = "./pb";
+
+// For generate proto:
+// $ protoc -I proto --go_out=plugins=grpc:. proto/storage_message.proto
+
+import "memory_message.proto";
+
+message Storage {
+  enum Driver {
+    UNKNOWN = 0;
+    HDD = 1;
+    SSD = 2;
+  }
+
+  Driver driver = 1;
+  Memory memory = 2;
+}
